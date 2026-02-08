@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>androvarme | Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="script.js">
+    <style>
+        /* VIDEO BACKGROUND STYLES - ADD THIS */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        #bgVideo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7) contrast(1.2);
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(10, 10, 15, 0.9) 0%, rgba(5, 5, 8, 0.7) 100%);
+        }
+        
+        /* Make sure content is on top */
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Audio controls */
+        .audio-controls {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 30px;
+            padding-top: 20px;
+        }
+        
+        .audio-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .audio-btn:hover {
+            background: rgba(255, 51, 102, 0.5);
+            border-color: #ff3366;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- ADD THIS VIDEO BACKGROUND SECTION -->
+    <div class="video-background">
+        <video autoplay muted loop id="bgVideo">
+            <!-- CHANGE THIS to your video file: -->
+            <source src="video.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- Your existing content (unchanged) -->
+    <div class="container">
+        <!-- Audio Controls -->
+        <div class="audio-controls">
+            <button id="audioToggle" class="audio-btn">
+                <i class="fas fa-volume-mute"></i>
+                <span>SOUND OFF</span>
+            </button>
+            <button id="playPause" class="audio-btn">
+                <i class="fas fa-play"></i>
+                <span>PLAY</span>
+            </button>
+        </div>
+        
+        <header class="header">
+            <div class="profile-section">
+                <div class="avatar-container">
+                    <div class="avatar">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <div class="status-indicator"></div>
+                </div>
+                
+                <h1 class="username">andro<span class="highlight">varme</span></h1>
+                <p class="tagline">Gamer • Creator • Legend</p>
+                
+                <div class="stats">
+                    <div class="stat">
+                      
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Active</span>
+
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="links-container">
+                <h2 class="section-title">CONNECT WITH ME</h2>
+                
+                <div class="social-links">
+                    <a href="https://www.roblox.com/users/5077745017/profile" target="_blank" class="social-link roblox">
+                        <div class="link-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="link-content">
+                            <h3>Roblox Profile</h3>
+                            <p>Check out my games & avatar</p>
+                        </div>
+                        <div class="link-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </a>
+                    
+                    <a href="https://discord.gg/8VrbNzH4uk" target="_blank" class="social-link discord">
+                        <div class="link-icon">
+                            <i class="fab fa-discord"></i>
+                        </div>
+                        <div class="link-content">
+                            <h3>Discord</h3>
+                            <p>Join my server & chat</p>
+                        </div>
+                        <div class="link-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </a>
+                    
+                    <a href="https://www.instagram.com/andriaomanadzee/" target="_blank" class="social-link instagram">
+                        <div class="link-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="link-content">
+                            <h3>Instagram</h3>
+                            <p>Single As Fuck</p>
+                        </div>
+                        <div class="link-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </a>
+                    
+                   
+                    
+                    <a href="#" class="social-link youtube">
+                        <div class="link-icon">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <div class="link-content">
+                            <h3>YouTube</h3>
+                            <p>Game highlights & tutorials</p>
+                        </div>
+                        <div class="link-arrow">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            
+            
+           
+            
+            <p class="footer-text">
+                Made with <i class="fas fa-heart"></i> by androvarme
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // VIDEO CONTROLS SCRIPT
+        const bgVideo = document.getElementById('bgVideo');
+        const audioToggle = document.getElementById('audioToggle');
+        const playPause = document.getElementById('playPause');
+        
+        // Start with muted video
+        bgVideo.muted = true;
+        
+        // Toggle mute/unmute
+        audioToggle.addEventListener('click', function() {
+            bgVideo.muted = !bgVideo.muted;
+            
+            if (bgVideo.muted) {
+                audioToggle.innerHTML = '<i class="fas fa-volume-mute"></i><span>SOUND OFF</span>';
+            } else {
+                audioToggle.innerHTML = '<i class="fas fa-volume-up"></i><span>SOUND ON</span>';
+                // Play video if it's paused
+                if (bgVideo.paused) {
+                    bgVideo.play();
+                    playPause.innerHTML = '<i class="fas fa-pause"></i><span>PAUSE</span>';
+                }
+            }
+        });
+        
+        // Toggle play/pause
+        playPause.addEventListener('click', function() {
+            if (bgVideo.paused) {
+                bgVideo.play();
+                playPause.innerHTML = '<i class="fas fa-pause"></i><span>PAUSE</span>';
+            } else {
+                bgVideo.pause();
+                playPause.innerHTML = '<i class="fas fa-play"></i><span>PLAY</span>';
+            }
+        });
+        
+        // Theme toggle (optional)
+        const themeSwitch = document.getElementById('themeSwitch');
+        themeSwitch.addEventListener('click', function() {
+            document.body.classList.toggle('light-theme');
+            
+            if (document.body.classList.contains('light-theme')) {
+                themeSwitch.innerHTML = '<i class="fas fa-sun"></i><span>LIGHT MODE</span>';
+            } else {
+                themeSwitch.innerHTML = '<i class="fas fa-moon"></i><span>DARK MODE</span>';
+            }
+        });
+        
+        // Auto-play when user clicks anywhere (browser requirement)
+        document.addEventListener('click', function initAudio() {
+            if (bgVideo.paused) {
+                bgVideo.play().catch(e => console.log("Autoplay prevented"));
+            }
+            document.removeEventListener('click', initAudio);
+        });
+        
+        console.log('🔥 Video Background Profile Loaded!');
+    </script>
+</body>
+</html>
