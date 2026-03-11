@@ -1,37 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANDROS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Guns-style Profile</title>
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <video id="bgVideo" autoplay muted loop>
-        <source src="bg.mp4" type="video/mp4">
-    </video>
-    <div class="overlay"></div>
+<!-- ENTRY SCREEN -->
+<div id="entry-screen">
+    <div id="enter-text">CLICK TO ENTER</div>
+</div>
 
-    <div class="container">
-        <h1>omanchikk</h1>
-        <div class="bio">Developer • Hot. • Klasni</div>
+<!-- Audio toggle -->
+<div id="audio-toggle">🔊</div>
 
-        <div class="links">
-            <a href="https://discord.com/users/895226812530065418" class="link" target="_blank">Discord</a>
-            <a href="https://www.instagram.com/andriaomanadzee/" class="link" target="_blank">Instagram ;) </a>
-            <a href="https://androstools.vercel.app/" class="link" target="_blank">Tools Website
-                for syber security Tools
-            </a>
+<!-- MAIN PROFILE -->
+<div id="profile-main">
+    <img src="background.png" id="bg-image" alt="Background">
+
+    <canvas id="particles"></canvas>
+
+    <div class="profile-card">
+        <img src="avatar.png" alt="Avatar" class="avatar">
+        <div class="username">androvarme</div>
+        <div class="location">Georgia</div>
+
+        <div class="activity-badge">
+            <img src="avatar.png" alt="Activity Avatar" class="activity-avatar">
+            <div class="activity-text">
+                <span class="activity-username">6b9s</span> is <strong>Playing JennyMod</strong><br>
+                Views the Modrinth Mods
+            </div>
+            <div class="activity-icon">MC</div>
         </div>
+
+        <div class="social-icons">
+            <a href="https://www.tiktok.com/@andro.mma">TikTok</a>
+            <a href="https://www.instagram.com/andriaomanadzee/">Instagram</a>
+            <a href="https://discord.com/users/895226812530065418">Discord</a>
+        </div>
+
+        <div class="views-counter">👁 69,420</div>
     </div>
+</div>
 
-    <button class="music-btn" id="musicBtn">Turn On Sound</button>
+<audio id="music" loop>
+    <source src="music.mp3" type="audio/mp3">
+</audio>
 
-    <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
-
 </html>
