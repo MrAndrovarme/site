@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title> better than guns.lol </title>
+<title>Andro6b9s</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
@@ -192,7 +192,7 @@ nav{
 
 <div id="splash">
   <div class="splash-bg-num">6B9S</div>
-  <p class="splash-eyebrow">Developer · Editor · Creator</p>
+  <p class="splash-eyebrow">Developer · Gamer · Creator</p>
   <h1 class="splash-title">Andro<br><em>6b9s</em></h1>
   <button class="splash-enter" onclick="enter()">Enter &nbsp;→</button>
 </div>
@@ -347,6 +347,9 @@ nav{
 
 <script>
 function enter(){
+  const audio=new Audio('sound.mp3');
+  audio.volume=0.8;
+  audio.play().catch(()=>{});
   const s=document.getElementById('splash');
   s.style.transition='opacity 0.6s ease';
   s.style.opacity='0';
