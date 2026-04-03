@@ -3,652 +3,374 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BETTER THAN GUNS.LOL</title>
+<title> better than guns.lol </title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&family=Oswald:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --green: #39ff14;
-    --dim-green: #1a7a00;
-    --red: #ff2200;
-    --dark: #050507;
-    --panel: #0a0c08;
-    --border: rgba(57,255,20,0.2);
-    --text: #b0c4a0;
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d0f;
+  --surface:#141416;
+  --surface2:#1c1c1f;
+  --ink:#f0ede8;
+  --muted:#6b6868;
+  --accent:#ff4d00;
+  --border:rgba(240,237,232,0.07);
+  --border2:rgba(240,237,232,0.12);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',sans-serif;overflow-x:hidden}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+#splash{
+  position:fixed;inset:0;z-index:999;
+  background:var(--bg);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+}
+.splash-eyebrow{font-size:11px;letter-spacing:5px;text-transform:uppercase;color:var(--muted);margin-bottom:32px}
+.splash-title{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(72px,16vw,180px);
+  line-height:0.88;text-align:center;color:var(--ink);
+}
+.splash-title em{font-style:italic;color:var(--accent)}
+.splash-bg-num{
+  position:absolute;
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(200px,38vw,480px);
+  color:rgba(240,237,232,0.02);
+  user-select:none;pointer-events:none;
+  bottom:-60px;left:50%;transform:translateX(-50%);
+  white-space:nowrap;
+}
+.splash-enter{
+  margin-top:56px;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:15px 36px;
+  background:var(--accent);color:#fff;
+  font-family:'Space Grotesk',sans-serif;
+  font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  border:none;cursor:pointer;border-radius:2px;
+  transition:opacity 0.2s,transform 0.2s;
+}
+.splash-enter:hover{opacity:0.85;transform:translateY(-1px)}
 
-  html, body {
-    width: 100%; height: 100%;
-    background: var(--dark);
-    color: var(--text);
-    font-family: 'Share Tech Mono', monospace;
-    overflow: hidden;
-    cursor: crosshair;
-  }
+#site{display:none}
 
-  /* ─── NOISE OVERLAY ─── */
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none; z-index: 9999; opacity: 0.35;
-  }
+nav{
+  position:sticky;top:0;z-index:100;
+  padding:0 40px;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid var(--border);
+  background:rgba(13,13,15,0.85);
+  backdrop-filter:blur(20px);
+}
+.nav-logo{font-family:'Instrument Serif',serif;font-size:22px;color:var(--ink);text-decoration:none}
+.nav-logo em{font-style:italic;color:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:28px}
+.nav-right a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;transition:color 0.15s}
+.nav-right a:hover{color:var(--ink)}
+.nav-cta{
+  border:1px solid var(--border2);color:var(--ink);
+  font-family:'Space Grotesk',sans-serif;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;
+  padding:9px 20px;border-radius:2px;cursor:pointer;
+  transition:background 0.15s;text-decoration:none;background:transparent;
+}
+.nav-cta:hover{background:var(--surface2)}
 
-  /* ─── SCANLINES ─── */
-  body::after {
-    content: '';
-    position: fixed; inset: 0;
-    background: repeating-linear-gradient(
-      to bottom,
-      transparent 0px,
-      transparent 2px,
-      rgba(0,0,0,0.08) 2px,
-      rgba(0,0,0,0.08) 4px
-    );
-    pointer-events: none; z-index: 9998;
-  }
+.hero{
+  min-height:calc(100vh - 64px);
+  display:grid;grid-template-columns:1fr 1fr;
+  max-width:1300px;margin:0 auto;
+  padding:0 40px;align-items:center;gap:40px;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:28px;
+}
+.hero-tag::before{content:'';display:block;width:24px;height:1.5px;background:var(--accent)}
+.hero-h1{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(56px,7vw,96px);
+  line-height:0.9;letter-spacing:-1px;margin-bottom:28px;
+}
+.hero-h1 em{font-style:italic;color:var(--accent)}
+.hero-p{font-size:16px;font-weight:300;color:var(--muted);line-height:1.7;max-width:420px;margin-bottom:40px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn-fill{padding:14px 28px;background:var(--ink);color:var(--bg);font-size:13px;font-weight:600;text-decoration:none;border-radius:2px;transition:opacity 0.15s}
+.btn-fill:hover{opacity:0.85}
+.btn-outline{padding:14px 28px;border:1px solid var(--border2);color:var(--ink);font-size:13px;font-weight:500;text-decoration:none;border-radius:2px;transition:border-color 0.15s,background 0.15s}
+.btn-outline:hover{border-color:rgba(240,237,232,0.25);background:var(--surface)}
 
-  /* ─── CORNER BRACKETS ─── */
-  .bracket {
-    position: fixed;
-    width: 40px; height: 40px;
-    border-color: var(--green);
-    border-style: solid;
-    opacity: 0.5;
-    z-index: 9990;
-  }
-  .bracket-tl { top: 16px; left: 16px; border-width: 2px 0 0 2px; }
-  .bracket-tr { top: 16px; right: 16px; border-width: 2px 2px 0 0; }
-  .bracket-bl { bottom: 64px; left: 16px; border-width: 0 0 2px 2px; }
-  .bracket-br { bottom: 64px; right: 16px; border-width: 0 2px 2px 0; }
+.hero-right{display:flex;flex-direction:column;gap:1px}
+.hero-stat-row{
+  background:var(--surface);border:1px solid var(--border);
+  padding:32px 36px;
+  display:flex;justify-content:space-between;align-items:flex-end;
+  transition:background 0.15s;
+}
+.hero-stat-row:hover{background:var(--surface2)}
+.hero-stat-row:first-child{border-radius:4px 4px 0 0}
+.hero-stat-row:last-child{border-radius:0 0 4px 4px}
+.stat-big{font-family:'Instrument Serif',serif;font-size:56px;line-height:1;color:var(--ink)}
+.stat-label{font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-align:right}
 
-  /* ─── HUD BARS ─── */
-  .hud-top {
-    position: fixed; top: 0; left: 0; right: 0;
-    height: 38px;
-    background: rgba(5,7,5,0.9);
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: center;
-    padding: 0 20px;
-    gap: 24px;
-    z-index: 500;
-  }
-  .hud-bottom {
-    position: fixed; bottom: 0; left: 0; right: 0;
-    height: 38px;
-    background: rgba(5,7,5,0.9);
-    border-top: 1px solid var(--border);
-    display: flex; align-items: center;
-    padding: 0 20px;
-    justify-content: space-between;
-    z-index: 500;
-  }
-  .hud-tag {
-    font-size: 10px;
-    color: var(--dim-green);
-    letter-spacing: 2px;
-    text-transform: uppercase;
-  }
-  .hud-tag span { color: var(--green); }
-  .hud-blink {
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--green);
-    animation: blink 1.2s step-end infinite;
-    display: inline-block; margin-right: 6px;
-  }
-  @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+.marquee-strip{
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  padding:20px 0;overflow:hidden;white-space:nowrap;margin:80px 0;
+}
+.marquee-inner{display:inline-block;animation:marquee 22s linear infinite}
+.marquee-item{display:inline-block;font-family:'Instrument Serif',serif;font-size:28px;font-style:italic;color:var(--muted);padding:0 40px}
+.marquee-item span{color:var(--accent);font-style:normal;font-size:18px;vertical-align:middle}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  /* ─── ENTER SCREEN ─── */
-  #enterScreen {
-    position: fixed; inset: 0;
-    background: var(--dark);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    z-index: 800;
-    gap: 0;
-  }
+.wrap{max-width:1300px;margin:0 auto;padding:0 40px}
 
-  .enter-grid {
-    position: absolute; inset: 0;
-    background-image:
-      linear-gradient(rgba(57,255,20,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(57,255,20,0.03) 1px, transparent 1px);
-    background-size: 40px 40px;
-    animation: gridShift 20s linear infinite;
-  }
-  @keyframes gridShift { from{background-position:0 0} to{background-position:40px 40px} }
+.about-layout{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);border-radius:4px;overflow:hidden;
+}
+.about-cell{background:var(--surface);padding:48px 44px}
+.cell-num{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
+.cell-title{font-family:'Instrument Serif',serif;font-size:32px;margin-bottom:16px}
+.cell-body{font-size:15px;font-weight:300;color:var(--muted);line-height:1.8}
 
-  .enter-center { position: relative; text-align: center; }
+.section-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:48px;border-bottom:1px solid var(--border);padding-bottom:24px;
+}
+.section-head-title{font-family:'Instrument Serif',serif;font-size:clamp(40px,5vw,64px);line-height:0.9}
+.section-head-title em{font-style:italic;color:var(--accent)}
+.section-label2{font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
 
-  .enter-skull {
-    font-size: 90px;
-    line-height: 1;
-    filter: drop-shadow(0 0 30px rgba(57,255,20,0.4));
-    animation: floatSkulk 3s ease-in-out infinite;
-    display: block;
-    margin-bottom: 8px;
-  }
-  @keyframes floatSkulk {
-    0%,100%{ transform: translateY(0) rotate(-2deg); }
-    50%{ transform: translateY(-12px) rotate(2deg); }
-  }
+.skill-row{display:flex;align-items:center;gap:24px;padding:22px 0;border-bottom:1px solid var(--border)}
+.skill-index{font-size:11px;color:var(--muted);min-width:28px;font-weight:500}
+.skill-name{font-size:16px;font-weight:500;min-width:200px}
+.skill-bar{flex:1;height:2px;background:var(--border2);border-radius:100px;overflow:hidden}
+.skill-fill{height:100%;background:var(--ink);border-radius:100px;width:0;transition:width 1.4s cubic-bezier(0.16,1,0.3,1)}
+.skill-fill.hot{background:var(--accent)}
+.skill-val{font-size:13px;color:var(--muted);min-width:52px;text-align:right;font-weight:500}
 
-  .enter-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(60px, 10vw, 120px);
-    color: #fff;
-    letter-spacing: 12px;
-    line-height: 0.9;
-    text-shadow: 0 0 40px rgba(57,255,20,0.3), 0 0 80px rgba(57,255,20,0.1);
-  }
-  .enter-name .accent { color: var(--green); }
+.links-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);border-radius:4px;overflow:hidden;
+}
+.link-card{
+  background:var(--surface);padding:36px 40px;
+  text-decoration:none;color:var(--ink);
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  transition:background 0.15s;
+}
+.link-card:hover{background:var(--surface2)}
+.link-card:hover .link-arrow{transform:translateX(4px)}
+.link-platform{font-family:'Instrument Serif',serif;font-size:28px;margin-bottom:6px}
+.link-handle{font-size:13px;color:var(--muted)}
+.link-arrow{font-size:22px;color:var(--muted);transition:transform 0.2s;flex-shrink:0}
 
-  .enter-tagline {
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: var(--dim-green);
-    margin: 12px 0 40px;
-    text-transform: uppercase;
-  }
+.skills-section{padding:80px 0}
+.links-section{padding:80px 0}
 
-  .enter-btn {
-    position: relative;
-    background: transparent;
-    border: 1px solid var(--green);
-    color: var(--green);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    padding: 16px 48px;
-    cursor: crosshair;
-    transition: all 0.2s;
-    overflow: hidden;
-    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
-  }
-  .enter-btn::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: var(--green);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.3s ease;
-  }
-  .enter-btn:hover::before { transform: scaleX(1); }
-  .enter-btn:hover { color: var(--dark); }
-  .enter-btn span { position: relative; z-index: 1; }
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.7s ease,transform 0.7s ease}
+.reveal.in{opacity:1;transform:none}
 
-  .enter-hint {
-    margin-top: 20px;
-    font-size: 10px;
-    color: rgba(57,255,20,0.3);
-    letter-spacing: 3px;
-    animation: blink 2s step-end infinite;
-  }
-
-  /* reticle lines */
-  .enter-center::before, .enter-center::after {
-    content: '';
-    position: absolute;
-    background: rgba(57,255,20,0.15);
-  }
-  .enter-center::before { width: 1px; height: 100vh; left: 50%; top: 50%; transform: translate(-50%,-50%); }
-  .enter-center::after  { height: 1px; width: 100vw; top: 50%; left: 50%; transform: translate(-50%,-50%); }
-
-  /* ─── MAIN SITE ─── */
-  #mainSite {
-    display: none;
-    width: 100%; height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    padding: 38px 0;
-    scroll-behavior: smooth;
-  }
-  #mainSite::-webkit-scrollbar { width: 4px; }
-  #mainSite::-webkit-scrollbar-track { background: var(--dark); }
-  #mainSite::-webkit-scrollbar-thumb { background: var(--dim-green); }
-
-  /* ─── HERO ─── */
-  .hero {
-    min-height: calc(100vh - 76px);
-    display: flex; align-items: center; justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    position: relative;
-    padding: 60px 20px;
-  }
-
-  .hero-bg {
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 50% 50%, rgba(57,255,20,0.04) 0%, transparent 70%);
-  }
-
-  .hero-overline {
-    font-size: 10px; letter-spacing: 5px; color: var(--dim-green);
-    text-transform: uppercase; margin-bottom: 16px;
-  }
-  .hero-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(70px, 12vw, 160px);
-    color: #fff;
-    letter-spacing: 10px;
-    line-height: 0.85;
-    text-shadow: 0 0 60px rgba(57,255,20,0.15);
-  }
-  .hero-name .g { color: var(--green); }
-
-  .hero-sub {
-    font-family: 'Oswald', sans-serif;
-    font-size: clamp(14px, 2vw, 18px);
-    font-weight: 300;
-    color: var(--text);
-    letter-spacing: 8px;
-    text-transform: uppercase;
-    margin: 20px 0 40px;
-  }
-
-  .hero-stats {
-    display: flex; gap: 40px;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 20px 40px;
-    margin-bottom: 40px;
-  }
-  .stat { text-align: center; }
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 36px; color: var(--green);
-    line-height: 1;
-  }
-  .stat-lbl { font-size: 9px; letter-spacing: 2px; color: var(--dim-green); text-transform: uppercase; margin-top: 4px; }
-
-  /* ─── NAV LINKS ─── */
-  .hero-links { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-  .link-btn {
-    display: flex; align-items: center; gap: 8px;
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding: 10px 20px;
-    text-decoration: none;
-    transition: all 0.2s;
-    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
-  }
-  .link-btn:hover {
-    border-color: var(--green);
-    color: var(--green);
-    background: rgba(57,255,20,0.05);
-    box-shadow: 0 0 20px rgba(57,255,20,0.1);
-  }
-  .link-btn .ico { font-size: 16px; }
-
-  /* ─── SECTIONS ─── */
-  .section {
-    max-width: 900px; margin: 0 auto;
-    padding: 80px 30px;
-    border-top: 1px solid var(--border);
-  }
-
-  .section-header {
-    display: flex; align-items: center; gap: 16px;
-    margin-bottom: 40px;
-  }
-  .section-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 48px; color: var(--border);
-    line-height: 1;
-  }
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 36px; color: #fff;
-    letter-spacing: 4px;
-  }
-  .section-title .g { color: var(--green); }
-  .section-line { flex: 1; height: 1px; background: var(--border); }
-
-  /* ABOUT */
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-  .about-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    padding: 24px;
-    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
-  }
-  .about-card-title {
-    font-size: 9px; letter-spacing: 3px;
-    color: var(--green); text-transform: uppercase;
-    margin-bottom: 12px;
-  }
-  .about-card p { font-size: 13px; line-height: 1.8; color: var(--text); }
-
-  /* SKILLS */
-  .skills-list { display: flex; flex-direction: column; gap: 10px; }
-  .skill-row { display: flex; align-items: center; gap: 14px; }
-  .skill-label {
-    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
-    color: var(--text); min-width: 130px;
-  }
-  .skill-bar {
-    flex: 1; height: 4px;
-    background: rgba(57,255,20,0.1);
-    position: relative; overflow: hidden;
-  }
-  .skill-fill {
-    position: absolute; left: 0; top: 0; height: 100%;
-    background: var(--green);
-    animation: fillBar 1.5s ease forwards;
-    width: 0;
-  }
-  @keyframes fillBar { to { width: var(--pct); } }
-  .skill-pct { font-size: 10px; color: var(--dim-green); min-width: 36px; text-align: right; }
-
-  /* SOCIAL LINKS */
-  .socials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
-  .social-card {
-    background: var(--panel);
-    border: 1px solid var(--border);
-    padding: 20px;
-    display: flex; flex-direction: column; align-items: center; gap: 10px;
-    text-decoration: none;
-    transition: all 0.2s;
-    clip-path: polygon(10px 0%, 100% 0%, calc(100% - 10px) 100%, 0% 100%);
-    cursor: crosshair;
-  }
-  .social-card:hover {
-    border-color: var(--green);
-    background: rgba(57,255,20,0.05);
-    transform: translateY(-4px);
-    box-shadow: 0 8px 30px rgba(57,255,20,0.1);
-  }
-  .social-ico { font-size: 28px; }
-  .social-name { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--text); }
-  .social-handle { font-size: 11px; color: var(--dim-green); }
-  .social-card:hover .social-name { color: var(--green); }
-
-  /* ─── TRANSITION ─── */
-  .flash-overlay {
-    position: fixed; inset: 0;
-    background: var(--green);
-    opacity: 0; pointer-events: none;
-    z-index: 900;
-    transition: opacity 0.08s;
-  }
-
-  /* ─── CROSSHAIR CURSOR ─── */
-  .crosshair-dot {
-    position: fixed;
-    width: 4px; height: 4px;
-    background: var(--green);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 10000;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 6px var(--green);
-  }
-  .crosshair-ring {
-    position: fixed;
-    width: 24px; height: 24px;
-    border: 1px solid rgba(57,255,20,0.5);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 10000;
-    transform: translate(-50%, -50%);
-    transition: width 0.1s, height 0.1s, opacity 0.1s;
-  }
-
-  @media (max-width: 600px) {
-    .about-grid { grid-template-columns: 1fr; }
-    .hero-stats { gap: 20px; padding: 16px 20px; }
-  }
+@media(max-width:768px){
+  nav{padding:0 20px}
+  .nav-right a:not(.nav-cta){display:none}
+  .hero{grid-template-columns:1fr;min-height:auto;padding:60px 20px}
+  .hero-right{display:none}
+  .wrap{padding:0 20px}
+  .about-layout{grid-template-columns:1fr}
+  .links-grid{grid-template-columns:1fr}
+  .section-head{flex-direction:column;align-items:flex-start;gap:12px}
+}
 </style>
 </head>
 <body>
 
-<!-- Custom cursor -->
-<div class="crosshair-dot" id="curDot"></div>
-<div class="crosshair-ring" id="curRing"></div>
-
-
-
-<!-- HUD bars -->
-<div class="hud-top">
-  <span class="hud-tag"><span class="hud-blink"></span>SYS_ONLINE</span>
-  <span class="hud-tag">USER: <span>GUEST</span></span>
-  <span class="hud-tag" id="hudTime">--:--:--</span>
-</div>
-<div class="hud-bottom">
-  <span class="hud-tag">ANDROS_OS <span>v1.0</span></span>
-  <span class="hud-tag">STATUS: <span>OPERATIONAL</span></span>
-  <span class="hud-tag">LOC: <span>UNKNOWN</span></span>
+<div id="splash">
+  <div class="splash-bg-num">6B9S</div>
+  <p class="splash-eyebrow">Developer · Editor · Creator</p>
+  <h1 class="splash-title">Andro<br><em>6b9s</em></h1>
+  <button class="splash-enter" onclick="enter()">Enter &nbsp;→</button>
 </div>
 
-<!-- Flash overlay -->
-<div class="flash-overlay" id="flashOverlay"></div>
+<div id="site">
+  <nav>
+    <a class="nav-logo" href="#">Andro<em>6b9s</em></a>
+    <div class="nav-right">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#links">Links</a>
+      <a class="nav-cta" href="https://discord.gg/UjZKagQEX6" target="_blank">Discord ↗</a>
+    </div>
+  </nav>
 
-<!-- ═══════════════════════════════════════════
-     ENTER SCREEN
-═══════════════════════════════════════════ -->
-<div id="enterScreen">
-  <div class="enter-grid"></div>
-  <div class="enter-center">
-    <span class="enter-skull">💚</span>
-    <div class="enter-name">ANDRO<br><span class="accent">6B9S</span></div>
-    <div class="enter-tagline">// Developer &nbsp;·&nbsp; Editor &nbsp;·&nbsp; Programmer</div>
-    <button class="enter-btn" id="enterBtn" onclick="enterSite()">
-      <span>[ ENTER ]</span>
-    </button>
-    <div class="enter-hint">▶ CLICK TO ENTER ◀</div>
+  <div class="hero">
+    <div class="hero-left reveal">
+      <div class="hero-tag">Based Online</div>
+      <h1 class="hero-h1">Building,<br>Gaming,<br><em>Creating.</em></h1>
+      <p class="hero-p">Developer working on Network Tools and PC Tweaking Software. When I'm not coding — gym, CS2, Minecraft, Brawl Stars.</p>
+      <div class="hero-actions">
+        <a class="btn-fill" href="https://discord.gg/UjZKagQEX6" target="_blank">Join Discord</a>
+        <a class="btn-outline" href="https://www.youtube.com/@androvarme" target="_blank">YouTube →</a>
+      </div>
+    </div>
+    <div class="hero-right reveal" style="transition-delay:0.15s">
+      <div class="hero-stat-row">
+        <div class="stat-big">6–7</div>
+        <div class="stat-label">Projects<br>built</div>
+      </div>
+      <div class="hero-stat-row">
+        <div class="stat-big">1.3K+</div>
+        <div class="stat-label">Followers<br>across platforms</div>
+      </div>
+      <div class="hero-stat-row">
+        <div class="stat-big">∞</div>
+        <div class="stat-label">Hours<br>in game</div>
+      </div>
+    </div>
   </div>
+
+  <div class="marquee-strip">
+    <div class="marquee-inner">
+      <span class="marquee-item">Counter-Strike 2 <span>✦</span></span>
+      <span class="marquee-item">Minecraft <span>✦</span></span>
+      <span class="marquee-item">Brawl Stars <span>✦</span></span>
+      <span class="marquee-item">Network Tools <span>✦</span></span>
+      <span class="marquee-item">PC Tweaking <span>✦</span></span>
+      <span class="marquee-item">GYM <span>✦</span></span>
+      <span class="marquee-item">Counter-Strike 2 <span>✦</span></span>
+      <span class="marquee-item">Minecraft <span>✦</span></span>
+      <span class="marquee-item">Brawl Stars <span>✦</span></span>
+      <span class="marquee-item">Network Tools <span>✦</span></span>
+      <span class="marquee-item">PC Tweaking <span>✦</span></span>
+      <span class="marquee-item">GYM <span>✦</span></span>
+    </div>
+  </div>
+
+  <div class="wrap" id="about">
+    <div class="about-layout reveal">
+      <div class="about-cell">
+        <div class="cell-num">01 — Profile</div>
+        <div class="cell-title">The person.</div>
+        <p class="cell-body">I like programming — this site is made by me. My hobbies are gym and programming, nothing else honestly. Simple life.</p>
+      </div>
+      <div class="about-cell">
+        <div class="cell-num">02 — Mission</div>
+        <div class="cell-title">What I'm building.</div>
+        <p class="cell-body">Currently working on Network Tools and PC Tweaking Software. Tools that are actually useful for people who care about their setup.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap skills-section" id="skills">
+    <div class="section-head reveal">
+      <div class="section-head-title">Skill<br><em>set.</em></div>
+      <div class="section-label2">What I do</div>
+    </div>
+    <div class="reveal" id="skillList">
+      <div class="skill-row">
+        <span class="skill-index">01</span>
+        <span class="skill-name">Counter-Strike 2</span>
+        <div class="skill-bar"><div class="skill-fill hot" data-pct="90"></div></div>
+        <span class="skill-val">9 / 10</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-index">02</span>
+        <span class="skill-name">Brawl Stars 😭</span>
+        <div class="skill-bar"><div class="skill-fill hot" data-pct="100"></div></div>
+        <span class="skill-val">10 / 10</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-index">03</span>
+        <span class="skill-name">Programming</span>
+        <div class="skill-bar"><div class="skill-fill" data-pct="95"></div></div>
+        <span class="skill-val">9.5 / 10</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-index">04</span>
+        <span class="skill-name">Developing</span>
+        <div class="skill-bar"><div class="skill-fill" data-pct="67"></div></div>
+        <span class="skill-val">6.7 / 10</span>
+      </div>
+      <div class="skill-row">
+        <span class="skill-index">05</span>
+        <span class="skill-name">Minecraft PVP</span>
+        <div class="skill-bar"><div class="skill-fill" data-pct="50"></div></div>
+        <span class="skill-val">5 / 10</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap links-section" id="links">
+    <div class="section-head reveal">
+      <div class="section-head-title">Find<br><em>me.</em></div>
+      <div class="section-label2">Socials</div>
+    </div>
+    <div class="links-grid reveal">
+      <a class="link-card" href="https://www.instagram.com/andriaomanadzee/" target="_blank">
+        <div>
+          <div class="link-platform">Instagram</div>
+          <div class="link-handle">@andriaomanadzee</div>
+        </div>
+        <div class="link-arrow">↗</div>
+      </a>
+      <a class="link-card" href="https://discord.gg/UjZKagQEX6" target="_blank">
+        <div>
+          <div class="link-platform">Discord</div>
+          <div class="link-handle">Minecraft & Community</div>
+        </div>
+        <div class="link-arrow">↗</div>
+      </a>
+      <a class="link-card" href="https://www.youtube.com/@androvarme" target="_blank">
+        <div>
+          <div class="link-platform">YouTube</div>
+          <div class="link-handle">@androvarme</div>
+        </div>
+        <div class="link-arrow">↗</div>
+      </a>
+      <a class="link-card" href="https://www.tiktok.com/@6b9s.andro" target="_blank">
+        <div>
+          <div class="link-platform">TikTok</div>
+          <div class="link-handle">@6b9s.andro</div>
+        </div>
+        <div class="link-arrow">↗</div>
+      </a>
+    </div>
+  </div>
+
+  <div style="height:80px"></div>
 </div>
-
-<!-- ═══════════════════════════════════════════
-     MAIN SITE
-═══════════════════════════════════════════ -->
-<div id="mainSite">
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-overline"></div>
-    <div class="hero-name">ANDRO<br><span class="g">6B9S</span></div>
-    <div class="hero-sub">Developer / Minecraft 🤍 / Counter Strike 2 </div>
-
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">6-7</div>
-        <div class="stat-lbl">Projects</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">1300+</div>
-        <div class="stat-lbl">Followers</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">INF/ERROR</div>
-        <div class="stat-lbl">Hoes</div>
-      </div>
-    </div>
-
-    <div class="hero-links">
-      <!-- ★ REPLACE href="#" WITH YOUR ACTUAL LINKS ★ -->
-
-      <a class="link-btn" href="https://www.instagram.com/andriaomanadzee/" target="_blank"><span class="ico">📸</span> Instagram</a>
-      <a class="link-btn" href="https://discord.gg/UjZKagQEX6" target="_blank"><span class="ico">🎮</span> Discord</a>
-      <a class="link-btn" href="https://www.youtube.com/@androvarme" target="_blank"><span class="ico">▶️</span> YouTube</a>
-     
-      <a class="link-btn" href="https://www.tiktok.com/@6b9s.andro" target="_blank"><span class="ico">🎵</span> TikTok</a>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section class="section">
-    <div class="section-header">
-      <div class="section-num">01</div>
-      <div class="section-title">ABOUT <span class="g">ME</span></div>
-      <div class="section-line"></div>
-    </div>
-    <div class="about-grid">
-      <div class="about-card">
-        <div class="about-card-title">// Profile</div>
-        <p>
-        about me. hmm. i mean i like programming this site made by me. 
-        my hobbys are GYM and Programming eh nothing else.
-        </p>
-      </div>
-      <div class="about-card">
-        <div class="about-card-title">// Mission</div>
-        <p>
-         Curently working on making Network Tools
-         And PC Tweaking Softwares. 
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section class="section">
-    <div class="section-header">
-      <div class="section-num">02</div>
-      <div class="section-title">SKILL <span class="g">SET</span></div>
-      <div class="section-line"></div>
-    </div>
-    <div class="skills-list">
-      <!-- Change labels and percentages to your actual skills -->
-      <div class="skill-row">
-        <span class="skill-label">Counter Strike  2</span>
-        <div class="skill-bar"><div class="skill-fill" style="--pct:90%"></div></div>
-        <span class="skill-pct">9/10</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-label">Brawlstars😭</span>
-        <div class="skill-bar"><div class="skill-fill" style="--pct:100%"></div></div>
-        <span class="skill-pct">10/10</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-label">Developing</span>
-        <div class="skill-bar"><div class="skill-fill" style="--pct:67%"></div></div>
-        <span class="skill-pct">6.7/10</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-label">Programming</span>
-        <div class="skill-bar"><div class="skill-fill" style="--pct:95%"></div></div>
-        <span class="skill-pct">9.5/10</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-label">Minecraft PVP</span>
-        <div class="skill-bar"><div class="skill-fill" style="--pct:50%"></div></div>
-        <span class="skill-pct">5/10</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- SOCIALS / LINKS -->
-  <section class="section">
-    <div class="section-header">
-      <div class="section-num">03</div>
-      <div class="section-title">FIND <span class="g">ME</span></div>
-      <div class="section-line"></div>
-    </div>
-    <div class="socials-grid">
-      <!-- ★ REPLACE href="#" AND @handle WITH YOUR ACTUAL INFO ★ -->
-
-      <a class="social-card" href="https://www.instagram.com/andriaomanadzee/" target="_blank">
-        <span class="social-ico">📸</span>
-        <span class="social-name">Instagram</span>
-        <span class="social-handle">@andriaomanadzee</span>
-      </a>
-      <a class="social-card" href="https://discord.gg/UjZKagQEX6" target="_blank">
-        <span class="social-ico">🎮</span>
-        <span class="social-name">Discord</span>
-        <span class="social-handle">Join My Minecraft And Hacking Community</span>
-      </a>
-      <a class="social-card" href="https://www.youtube.com/@androvarme" target="_blank">
-        <span class="social-ico">▶️</span>
-        <span class="social-name">YouTube</span>
-        <span class="social-handle">@androvarme</span>
-      </a>
-
-      <a class="social-card" href="https://www.tiktok.com/@6b9s.andro" target="_blank">
-        <span class="social-ico">🎵</span>
-        <span class="social-name">TikTok</span>
-        <span class="social-handle">@6b9s.andro</span>
-      </a>
-    </div>
-  </section>
-
-</div><!-- /mainSite -->
 
 <script>
-  // ─── CURSOR ───
-  const dot = document.getElementById('curDot');
-  const ring = document.getElementById('curRing');
-  document.addEventListener('mousemove', e => {
-    dot.style.left = e.clientX + 'px';
-    dot.style.top = e.clientY + 'px';
-    ring.style.left = e.clientX + 'px';
-    ring.style.top = e.clientY + 'px';
-  });
-  document.addEventListener('mousedown', () => {
-    ring.style.width = '14px'; ring.style.height = '14px';
-  });
-  document.addEventListener('mouseup', () => {
-    ring.style.width = '24px'; ring.style.height = '24px';
-  });
-
-  // ─── HUD CLOCK ───
-  function tick() {
-    const d = new Date();
-    document.getElementById('hudTime').textContent =
-      String(d.getHours()).padStart(2,'0') + ':' +
-      String(d.getMinutes()).padStart(2,'0') + ':' +
-      String(d.getSeconds()).padStart(2,'0');
-  }
-  tick(); setInterval(tick, 1000);
-
-  // ─── ENTER + SOUND ───
-  // HOW TO ADD SOUND:
-  //   1. Put your sound file in the SAME folder as this index.html
-  //   2. Name it exactly:  sound.mp3
-  //   3. Done — it will play automatically when someone clicks ENTER
-  //
-  // The click is REQUIRED by browsers before any audio can play.
-  // That's why the enter screen exists — perfect solution!
-
-  function enterSite() {
-    // Try to play sound.mp3 from same folder
-    const audio = new Audio('sound.mp3');
-    audio.volume = 0.8;
-    audio.play().catch(() => {
-      // No sound file found, that's fine — site still works
-    });
-
-    // Flash effect
-    const flash = document.getElementById('flashOverlay');
-    flash.style.opacity = '0.15';
-    setTimeout(() => flash.style.opacity = '0', 150);
-
-    // Transition
-    const enter = document.getElementById('enterScreen');
-    enter.style.transition = 'opacity 0.6s ease';
-    enter.style.opacity = '0';
-    setTimeout(() => {
-      enter.style.display = 'none';
-      document.getElementById('mainSite').style.display = 'block';
-    }, 600);
-  }
-
-  // Also allow pressing Enter key
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Enter' && document.getElementById('enterScreen').style.display !== 'none') {
-      enterSite();
+function enter(){
+  const s=document.getElementById('splash');
+  s.style.transition='opacity 0.6s ease';
+  s.style.opacity='0';
+  s.style.pointerEvents='none';
+  setTimeout(()=>{
+    s.style.display='none';
+    document.getElementById('site').style.display='block';
+    init();
+  },600);
+}
+document.addEventListener('keydown',e=>{if(e.key==='Enter')enter()});
+function init(){
+  const io=new IntersectionObserver(en=>{en.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')})},{threshold:0.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  const so=new IntersectionObserver(en=>{en.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.skill-fill').forEach(f=>f.style.width=f.dataset.pct+'%');
+      so.unobserve(e.target);
     }
-  });
+  })},{threshold:0.3});
+  const sl=document.getElementById('skillList');
+  if(sl)so.observe(sl);
+  setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')),80);
+}
 </script>
 </body>
 </html>
